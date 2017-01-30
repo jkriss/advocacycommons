@@ -89,6 +89,8 @@ div#form_container form#caller_data ul#main_form_elements {
         div#form_container form#caller_data ul#main_form_elements li input[type="submit"]:hover {
           background-color: #ccc; }
 
+div#meta_form div#form_teaser a#show_full_form_desc {
+  font-size: .85em; }
 div#meta_form p {
   margin-bottom: 1em; }
 div#meta_form div#sharing {

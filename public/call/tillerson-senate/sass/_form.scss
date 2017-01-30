@@ -46,6 +46,11 @@ div#form_container {
 }
 
 div#meta_form {
+  div#form_teaser {
+    a#show_full_form_desc {
+      font-size:.85em;
+    }
+  }
   p {
 	  margin-bottom: 1em;
 	}
