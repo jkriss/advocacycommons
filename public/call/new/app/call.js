@@ -1,4 +1,27 @@
-function callMeMaybe(campaign,phone,zip) {
+function callMeMaybe(phone,zip) {
+  $.get({
+		data: {
+			'party' : 'D',
+			'chamber' : 'senate',
+			'state' : 'MA'
+		},
+		url: 'https://congress.api.sunlightfoundation.com/legislators',
+		dataType: 'json',
+		success: function (res) {
+			var senators = res.results;
+			if (senators) {
+				senators.forEach(function(el) {
+					console.log('Found a senator:');
+					console.log(el);
+				});
+			} else {
+				console.log('No senators matching the criteria were found.');
+			}
+		}
+	});
+	
+  
+  
 	var data = {
 	campaignId: campaign,
 	userPhone: phone,
