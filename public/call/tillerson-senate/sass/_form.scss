@@ -45,6 +45,12 @@ div#form_container {
 	}
 }
 
-div#meta_form p {
-	margin-bottom: 1em;
+div#meta_form {
+  p {
+	  margin-bottom: 1em;
+	}
+	div#sharing {
+	  border-top: 1px dotted #aaaaaa;
+	  font-size: 0.85em;
+	}
 }

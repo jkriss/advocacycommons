@@ -70,7 +70,10 @@ $(document).ready(function(){
 			immediate: true,
 			done: function(data, status) {
 				console.log('Submitted data to AN.');
-				callMeMaybe($('input[name="phone_number"]').val(),$('input[name="postal_code"]').val());
+				$('div#form_teaser, div#form_full_desc').slideUp();
+				$('div.after-submit-reveal').slideDown();
+				$('div#form_container').fadeTo(500,0.2);
+				$('input').attr('disabled','true');
 			},
 			fail : function(jqXHR, textStatus, errorThrown) {
 				console.log('Error ' + errorThrown + ' ' + textStatus);

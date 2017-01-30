@@ -31,16 +31,18 @@ div#content {
     div#content div#form_container {
       float: left;
       width: 40%; } }
-  @media (min-width: 1024px) {
-    div#content div#meta_form {
-      float: right;
-      width: 55%; } }
-  @media (min-width: 768px) and (max-width: 1023px) {
-    div#content div#meta_form {
-      float: right;
-      width: 55%; } }
-  div#content div#meta_form div#form_full_desc, div#content div#meta_form div#script {
-    display: none; }
+  div#content div#meta_form {
+    margin-bottom: 2em; }
+    @media (min-width: 1024px) {
+      div#content div#meta_form {
+        float: right;
+        width: 55%; } }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      div#content div#meta_form {
+        float: right;
+        width: 55%; } }
+    div#content div#meta_form div#form_full_desc, div#content div#meta_form div.after-submit-reveal {
+      display: none; }
 
 div#footer {
   clear: both;
@@ -86,6 +88,9 @@ div#form_container form#caller_data ul#main_form_elements {
 
 div#meta_form p {
   margin-bottom: 1em; }
+div#meta_form div#sharing {
+  border-top: 1px dotted #aaaaaa;
+  font-size: 0.85em; }
 
 div#header {
   background-color: #c869bf;
