@@ -1,3 +1,5 @@
+$footer-padding: 2%;
+
 div#footer {
   height: 3em;
 	div#partner_logos {
@@ -5,15 +7,17 @@ div#footer {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+		//Give the partner logo div a negative margin so the logos fit the whole footer.
+		margin: 0 -$full-width-content-padding;
 		@include desktop {
-			margin: 0 -5%;
+			margin: 0 -$footer-padding;
 		}
 		@include tablet {
-			margin: 0 -5%;
+			margin: 0 -$footer-padding;
 		}
 		div.partner-logo-div {
 		  height: 100%;
-			padding: 0 5%;
+			padding: 0 $footer-padding;
 			img.partner-image {
 				max-height: 100%;
 				max-width: 100%;

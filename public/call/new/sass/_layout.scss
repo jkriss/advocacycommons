@@ -5,6 +5,8 @@ $tablet-width: 768px;
 /* Content width variables */
 $desktop-content-width: 900px;
 $tablet-content-width: 700px;
+//This is for when content fills the screen (viewport < tablet-width)
+$full-width-content-padding: 2%;
 
 
 @mixin desktop {
@@ -29,10 +31,12 @@ div#header {
   align-items: center;
   margin-bottom: 1em;
 }
-
+div#padded_wrapper {
+  //Set the full-width content padding.  Always true, but doesn't come into play when content is floating center.
+  padding: 0 $full-width-content-padding;
+}
 div#content {
   margin: 0 auto;
-  padding: 0 5%;
   @include desktop {
     width: $desktop-content-width;
   }
