@@ -32,19 +32,36 @@ $(document).ready(function(){
 	.on('form:success',function() {
 	  console.log('Form validated.');
 	  query_string = new URLSearchParams(window.location.search);
-	  var OSDIBody = {
-	    'given_name' : $('input#given_name').val(),
-	    'family_name' : $('input#family_name').val(),
-	    'email_address' : $('input#email_address').val(),
-	    'postal_code' : $('input#postal_code').val(),
-	    'phone_number' : $('input#phone_number').val(),
-	    'custom[sms_opt_in]' : $('input#sms_opt_in_checkbox').prop('checked'),
-	    'action_network:referrer_data' : {
+	  OSDIBody = {
+	    'person' : {
+	      'given_name' : $('input#given_name').val(),
+				'family_name' : $('input#family_name').val(),
+	      'email_addresses' : [ 
+	        {
+	          'address' : $('input#email_address').val(),
+	          'status' : 'subscribed'
+	        }
+	      ],
+				'phone_number' : $('input#phone_number').val(),
+				'postal_addresses' : [
+					{ 'postal_code' : $('input#postal_code').val() }
+				]
+			},
+	    "triggers": {
+				"autoresponse": {
+					"enabled": true
+				}
+			},
+			'action_network:referrer_data' : {
 	      'source' : query_string.get('source'),
 	      'referrer' : query_string.get('referrer'),
 	      'website' : 'http://www.advocacycommons.org'
+	    },
+	    'custom_fields' : {
+				'sms_opt_in' : $('input#sms_opt_in_checkbox').prop('checked')
 	    }
 	  };
+
 	  console.log(OSDIBody);
 		$(form)
 		.osdi({
