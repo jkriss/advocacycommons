@@ -38,7 +38,6 @@ $(document).ready(function(){
 		e.preventDefault();
 	});
 	var parsley_instance = $(form).parsley();
-
 	parsley_instance
 	.on('form:success',function() {
 	  console.log('Form validated.');
