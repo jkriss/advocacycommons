@@ -6,8 +6,13 @@ function getParameterByName(name) {
         results = regex.exec(url);
     if (!results) return null;
     if (!results[2]) return '';
-    //return decodeURIComponent(results[2].replace(/\+/g, " "));
-    return 'bar';
+    try {
+			var retval = decodeURIComponent(results[2].replace(/\+/g, " "));
+		} catch(e) {
+		  console.log(e);
+		  var retval = '';
+		}
+    return retval;
 }
 
 $(document).ready(function(){
