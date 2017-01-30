@@ -78,6 +78,7 @@ $(document).ready(function(){
 			fail : function(jqXHR, textStatus, errorThrown) {
 				console.log('Error ' + errorThrown + ' ' + textStatus);
 				console.log(jqXHR);
+				alert('Uh oh, there was an error submitting your info.  Try reloading the page and filling out the form again.');
 			}
 		});
 	})

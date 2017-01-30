@@ -52,5 +52,11 @@ div#meta_form {
 	div#sharing {
 	  border-top: 1px dotted #aaaaaa;
 	  font-size: 0.85em;
+	  div#share_widgets_container {
+	    div.share-container {
+	      float:left;
+	      margin-right: 1em;
+	    }
+	  }
 	}
 }

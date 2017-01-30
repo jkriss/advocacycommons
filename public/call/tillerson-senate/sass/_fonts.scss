@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab';
+@import 'https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab|Roboto+Slab:b';
 
 @mixin title-font {
   font-family: 'Roboto', sans-serif;
@@ -8,4 +8,7 @@
 @mixin body-font {
    font-family: 'Roboto Slab', serif;
    color: #111;
+}
+strong {
+  font-weight: bold;
 }

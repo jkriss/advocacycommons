@@ -1,4 +1,7 @@
-@import "https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab";
+@import "https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab|Roboto+Slab:b";
+strong {
+  font-weight: bold; }
+
 /* Screen variables */
 /* Content width variables */
 div#header {
@@ -91,6 +94,9 @@ div#meta_form p {
 div#meta_form div#sharing {
   border-top: 1px dotted #aaaaaa;
   font-size: 0.85em; }
+  div#meta_form div#sharing div#share_widgets_container div.share-container {
+    float: left;
+    margin-right: 1em; }
 
 div#header {
   background-color: #c869bf;
