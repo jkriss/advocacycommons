@@ -31,7 +31,10 @@ $(document).ready(function(){
 	parsley_instance
 	.on('form:success',function() {
 	  console.log('Form validated.');
-	  query_string = new URLSearchParams(window.location.search);
+	  var query_string = new URLSearchParams(window.location.search);
+	  var email_subscription_status='subscribed';
+	  if(!$('input#email_opt_in_check').prop('checked')) email_subscription_status='unsubscribed';
+
 	  OSDIBody = {
 	    'person' : {
 	      'given_name' : $('input#given_name').val(),
@@ -39,7 +42,7 @@ $(document).ready(function(){
 	      'email_addresses' : [ 
 	        {
 	          'address' : $('input#email_address').val(),
-	          'status' : 'subscribed'
+	          'status' : email_subscription_status
 	        }
 	      ],
 				'phone_number' : $('input#phone_number').val(),

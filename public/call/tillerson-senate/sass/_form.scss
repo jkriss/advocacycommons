@@ -17,7 +17,17 @@ div#form_container {
 			margin: 0;
 			li {
 				margin-bottom: .5em;
-		    label#sms_opt_in_label {
+				&#email_subscription_controls {
+				    display: flex;
+						flex-direction: column;
+				}
+				a#reveal_email_subscription_preferences {
+				  font-size: 0.75em;
+				}
+				div#email_subscription_preferences {
+				  display: none;
+				}
+		    label {
 					font-size: 0.75em;
 				}
 				input {	  

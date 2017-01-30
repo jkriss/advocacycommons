@@ -70,7 +70,14 @@ div#form_container form#caller_data ul#main_form_elements {
   margin: 0; }
   div#form_container form#caller_data ul#main_form_elements li {
     margin-bottom: .5em; }
-    div#form_container form#caller_data ul#main_form_elements li label#sms_opt_in_label {
+    div#form_container form#caller_data ul#main_form_elements li#email_subscription_controls {
+      display: flex;
+      flex-direction: column; }
+    div#form_container form#caller_data ul#main_form_elements li a#reveal_email_subscription_preferences {
+      font-size: 0.75em; }
+    div#form_container form#caller_data ul#main_form_elements li div#email_subscription_preferences {
+      display: none; }
+    div#form_container form#caller_data ul#main_form_elements li label {
       font-size: 0.75em; }
     div#form_container form#caller_data ul#main_form_elements li input {
       border: 1px solid #aaa;
