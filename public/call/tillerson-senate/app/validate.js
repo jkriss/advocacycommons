@@ -68,7 +68,7 @@ $(document).ready(function(){
 	  console.log(OSDIBody);
 		$(form)
 		.osdi({
-			endpoint: 'https://actionnetwork.org/api/v2/forms/773c08ec-e3b6-4596-878d-3653b39a3d3c/submissions',
+			endpoint: 'https://actionnetwork.org/api/v2/forms/0ffd7fb8-1846-4acc-9f1b-4ecabc86500b/submissions',
 			body: OSDIBody,
 			immediate: true,
 			done: function(data, status) {
