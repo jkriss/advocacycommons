@@ -1,4 +1,7 @@
-@import "https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab";
+@import "https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab|Roboto+Slab:b";
+strong {
+  font-weight: bold; }
+
 /* Screen variables */
 /* Content width variables */
 div#header {
@@ -31,16 +34,18 @@ div#content {
     div#content div#form_container {
       float: left;
       width: 40%; } }
-  @media (min-width: 1024px) {
-    div#content div#meta_form {
-      float: right;
-      width: 55%; } }
-  @media (min-width: 768px) and (max-width: 1023px) {
-    div#content div#meta_form {
-      float: right;
-      width: 55%; } }
-  div#content div#meta_form div#form_full_desc, div#content div#meta_form div#script {
-    display: none; }
+  div#content div#meta_form {
+    margin-bottom: 2em; }
+    @media (min-width: 1024px) {
+      div#content div#meta_form {
+        float: right;
+        width: 55%; } }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      div#content div#meta_form {
+        float: right;
+        width: 55%; } }
+    div#content div#meta_form div#form_full_desc, div#content div#meta_form div.after-submit-reveal {
+      display: none; }
 
 div#footer {
   clear: both;
@@ -59,13 +64,23 @@ div#form_title_container div#form_title {
   text-transform: uppercase;
   font-size: 2em; }
 
+@media (max-width: 768px) {
+  div#form_container.disabled {
+    display: none; } }
 div#form_container form#caller_data ul#main_form_elements {
   list-style-type: none;
   padding: 0;
   margin: 0; }
   div#form_container form#caller_data ul#main_form_elements li {
     margin-bottom: .5em; }
-    div#form_container form#caller_data ul#main_form_elements li label#sms_opt_in_label {
+    div#form_container form#caller_data ul#main_form_elements li#email_subscription_controls {
+      display: flex;
+      flex-direction: column; }
+    div#form_container form#caller_data ul#main_form_elements li a#reveal_email_subscription_preferences {
+      font-size: 0.75em; }
+    div#form_container form#caller_data ul#main_form_elements li div#email_subscription_preferences {
+      display: none; }
+    div#form_container form#caller_data ul#main_form_elements li label {
       font-size: 0.75em; }
     div#form_container form#caller_data ul#main_form_elements li input {
       border: 1px solid #aaa;
@@ -84,8 +99,18 @@ div#form_container form#caller_data ul#main_form_elements {
         div#form_container form#caller_data ul#main_form_elements li input[type="submit"]:hover {
           background-color: #ccc; }
 
+div#meta_form div#form_teaser a#show_full_form_desc {
+  font-size: .85em; }
 div#meta_form p {
   margin-bottom: 1em; }
+div#meta_form div#sharing {
+  border-top: 1px dotted #aaaaaa;
+  font-size: 0.85em; }
+  div#meta_form div#sharing div#share_widgets_container {
+    height: 1em; }
+    div#meta_form div#sharing div#share_widgets_container div.share-container {
+      float: left;
+      margin-right: 1em; }
 
 div#header {
   background-color: #c869bf;

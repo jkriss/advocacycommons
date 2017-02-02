@@ -1,8 +1,24 @@
+//Function to return URL query values
+function getParameterByName(name) {
+    url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    try {
+			var retval = decodeURIComponent(results[2].replace(/\+/g, " "));
+		} catch(e) {
+		  console.log(e);
+		  var retval = '';
+		}
+    return retval;
+}
+
 $(document).ready(function(){
 	window.Parsley.addValidator('zipcode', {
 		requirementType: 'string',
 		validateString: function(value) {
-		  console.log('received value ' + value + ' to validate as ZIP');
 			return value.length == 5  && parseInt(value);
 		},
 		messages: {
@@ -27,11 +43,12 @@ $(document).ready(function(){
 		e.preventDefault();
 	});
 	var parsley_instance = $(form).parsley();
-
 	parsley_instance
 	.on('form:success',function() {
 	  console.log('Form validated.');
-	  query_string = new URLSearchParams(window.location.search);
+	  var email_subscription_status='subscribed';
+	  if(!$('input#email_opt_in_check').prop('checked')) email_subscription_status='unsubscribed';
+
 	  OSDIBody = {
 	    'person' : {
 	      'given_name' : $('input#given_name').val(),
@@ -39,7 +56,7 @@ $(document).ready(function(){
 	      'email_addresses' : [ 
 	        {
 	          'address' : $('input#email_address').val(),
-	          'status' : 'subscribed'
+	          'status' : email_subscription_status
 	        }
 	      ],
 				'phone_number' : $('input#phone_number').val(),
@@ -53,8 +70,8 @@ $(document).ready(function(){
 				}
 			},
 			'action_network:referrer_data' : {
-	      'source' : query_string.get('source'),
-	      'referrer' : query_string.get('referrer'),
+	      'source' : getParameterByName('source'),
+	      'referrer' : getParameterByName('referrer'),
 	      'website' : 'http://www.advocacycommons.org'
 	    },
 	    'custom_fields' : {
@@ -65,16 +82,22 @@ $(document).ready(function(){
 	  console.log(OSDIBody);
 		$(form)
 		.osdi({
-			endpoint: 'https://actionnetwork.org/api/v2/forms/773c08ec-e3b6-4596-878d-3653b39a3d3c/submissions',
+			endpoint: 'https://actionnetwork.org/api/v2/forms/0ffd7fb8-1846-4acc-9f1b-4ecabc86500b/submissions',
 			body: OSDIBody,
 			immediate: true,
 			done: function(data, status) {
 				console.log('Submitted data to AN.');
-				//callMeMaybe('7',$('input[name="phone_number"]').val(),$('input[name="postal_code"]').val());
+				$('div#form_teaser, div#form_full_desc').slideUp();
+				$('div.after-submit-reveal').slideDown();
+				$('div#form_container')
+				  .fadeTo(500,0.2)
+				  .addClass('disabled');
+				$('input').attr('disabled','true');
 			},
 			fail : function(jqXHR, textStatus, errorThrown) {
 				console.log('Error ' + errorThrown + ' ' + textStatus);
 				console.log(jqXHR);
+				alert('Uh oh, there was an error submitting your info.  Try reloading the page and filling out the form again.');
 			}
 		});
 	})

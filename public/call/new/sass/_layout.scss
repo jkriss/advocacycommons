@@ -21,6 +21,12 @@ $full-width-content-padding: 2%;
   }
 }
 
+@mixin mobile {
+  @media (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
 
 div#header {
   display: flex;
@@ -58,6 +64,7 @@ div#content {
   }
   
   div#meta_form {
+    margin-bottom: 2em;
     @include desktop {
 			float:right;
 			width: 55%;
@@ -66,7 +73,7 @@ div#content {
 		  float: right;
 		  width: 55%;
 		}
-		div#form_full_desc, div#script {
+		div#form_full_desc, div.after-submit-reveal {
 		  display: none;
 		}
   }
