@@ -74,9 +74,6 @@ $(document).ready(function(){
 	      'referrer' : getParameterByName('referrer'),
 	      'website' : 'http://www.advocacycommons.org'
 	    },
-	    'custom_fields' : {
-				'sms_opt_in' : $('input#sms_opt_in_checkbox').prop('checked')
-	    }
 	  };
 
 	  console.log(OSDIBody);
