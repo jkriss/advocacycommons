@@ -10,17 +10,7 @@ class Event < ApplicationRecord
 
   after_save :add_identifier
 
-  # Import events from Action Network OSDI API.
-  # Requires ACTION_NETWORK_API_TOKEN set in ENV.
-  # There are no external endpoints for this method yet.
-  def self.import!
-    events = Api::Events.new
-    client = Api::EventsRepresenter.new(events)
-    client.get(uri: 'https://actionnetwork.org/api/v2/events', as: 'application/json') do |request|
-      request['OSDI-API-TOKEN'] = Rails.application.secrets.action_network_api_token
-    end
-    events.events.each(&:save!)
-  end
+  scope :identifier, ->(identifier) { where('? = any (identifiers)', identifier) }
 
   def add_identifier
     identifier = "advocacycommons:#{id}"
