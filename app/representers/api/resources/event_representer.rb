@@ -26,4 +26,8 @@ class Api::Resources::EventRepresenter < Api::Resources::Representer
   property :visibility
 
   property :location, decorator: Api::Resources::AddressRepresenter, class: EventAddress
+
+  link :organizer do
+    "/api/v1/organizers/#{represented.organizer_id}"
+  end
 end
