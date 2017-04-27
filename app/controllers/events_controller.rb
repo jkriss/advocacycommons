@@ -12,16 +12,13 @@ class EventsController < ApplicationController
   end
 
   def show
-    #this can't be the right way to do this = rabble
-    @events = Event.all if params[:id] == 'events'
-    @event = Event.find(params[:id]) if @events.nil? && params[:id].kind_of?(Fixnum)
-
+    @event = Event.find(params[:id]) unless params[:id] == 'events'
 
     respond_to do |format|
       format.html
       format.json do
-        render json: JsonApi::EventsRepresenter.for_collection.new(Event.add_attendance_counts(@events)).to_json if @events
         render json: JsonApi::EventRepresenter.new(@event).to_json if @event
+        render json: JsonApi::EventsRepresenter.for_collection.new(Event.add_attendance_counts(events)).to_json if params[:id] == 'events'
       end
     end
   end
@@ -30,7 +27,15 @@ class EventsController < ApplicationController
   private
 
   def events
-    @events = Event.all
+    if params[:filter] then
+     return Event.where('title ilike ?',"%#{params[:filter]}%")
+    elsif params[:id].kind_of?(Fixnum) then
+      return Event.find(params[:id])
+    else
+      return Event.all
+      #this obiviously breaks with a user being in multiple groups
+      #return current_user.groups.first.events
+    end
   end
 
 end
