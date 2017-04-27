@@ -16,4 +16,15 @@ class Api::Resources::EventRepresenterTest < ActiveSupport::TestCase
       representer.links['osdi:organizer']&.href
     )
   end
+
+
+  test 'creator link' do
+    event = Event.new
+    representer = Api::Resources::EventRepresenter.new(event)
+    representer.from_json('{"name":"Womens March PDX", "_links": {"osdi:creator": {"href": "https://actionnetwork.org/api/v2/people/8a625981-67a4-4457-8b55-2e30b267b2c2"}}}')
+    assert_equal(
+      'https://actionnetwork.org/api/v2/people/8a625981-67a4-4457-8b55-2e30b267b2c2',
+      representer.links['osdi:creator']&.href
+    )
+  end
 end

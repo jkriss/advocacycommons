@@ -30,4 +30,8 @@ class Api::Resources::EventRepresenter < Api::Resources::Representer
   link :organizer do
     "/api/v1/organizers/#{represented.organizer_id}"
   end
+
+  link :creator do
+    "/api/v1/creator/#{represented.creator_id}"
+  end
 end
