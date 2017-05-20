@@ -62,3 +62,6 @@ node_modules
 # Generated js bundles
 app/assets/webpack
 .env
+
+# Local Postgres data
+postgres-data

@@ -18,6 +18,11 @@ This project is a work in progress and nothing which is useable by end users is 
 * Ubuntu: `sudo -u postgres createuser $USER -s`
 * `bin/setup`
 
+## Getting Started with Docker
+
+    docker-compose run web bin/setup
+    docker-compose up
+
 ## Run Tests
 `rake`
 
